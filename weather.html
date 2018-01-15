@@ -106,14 +106,14 @@
 
                         var d = get_todays_date();
                         var l_l = format_lat_long(latitude,longitude);
-                        var moon_phase_url = 'https://api.usno.navy.mil/rstt/oneday?date='+d+'&coords='+l_l+'&tz=7';
-                        https_get(moon_phase_url, function(data) {
-                            console.log(data);
-                            draw_moon(data);
+//                         var moon_phase_url = 'https://api.usno.navy.mil/rstt/oneday?date='+d+'&coords='+l_l+'&tz=7';
+//                         https_get(moon_phase_url, function(data) {
+//                             console.log(data);
+//                             draw_moon(data);
                         });
                     });
                 });
-            });
+//             });
 
         </script>
         <i id="weather_icon"></i>
