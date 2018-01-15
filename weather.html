@@ -29,7 +29,7 @@
         <script>
 
             function https_get(url, success) {
-                var xhttps = new XMLHttpsRequest();
+                var xhttps = new XMLHttpRequest();
                 xhttps.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
                         var data = JSON.parse(xhttps.responseText);
