@@ -28,16 +28,16 @@
     <body>
         <script>
 
-            function http_get(url, success) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
+            function https_get(url, success) {
+                var xhttps = new XMLHttpsRequest();
+                xhttps.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
-                        var data = JSON.parse(xhttp.responseText);
+                        var data = JSON.parse(xhttps.responseText);
                         success(data);
                     }
                 };
-                xhttp.open("GET", url, true);
-                xhttp.send();
+                xhttps.open("GET", url, true);
+                xhttps.send();
             }
 
             function get_todays_date() {
@@ -84,16 +84,16 @@
 
 
             var ip_url = 'https://api.ipify.org/?format=json';
-            http_get(ip_url, function(data) {
+            https_get(ip_url, function(data) {
                 var ip_address = data.ip;
                 var location_url = 'https://ipapi.co/'+ip_address+'/json/';
-                http_get(location_url, function(data) {
+                https_get(location_url, function(data) {
                     var latitude = Math.random()*180-90;
                     var longitude = Math.random()*360-180;
                     //var latitude = data.latitude;
                     //var longitude = data.longitude;
-                    var weather_url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=b03cb314cd65e6faa00dc416bd075c78';
-                    http_get(weather_url, function(data) {
+                    var weather_url = 'https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&appid=b03cb314cd65e6faa00dc416bd075c78';
+                    https_get(weather_url, function(data) {
                         var id_category = data.weather[0].id;
                         var description = data.weather[0].description;
                         var weather_icon = document.getElementById("weather_icon");
@@ -106,8 +106,8 @@
 
                         var d = get_todays_date();
                         var l_l = format_lat_long(latitude,longitude);
-                        var moon_phase_url = 'http://api.usno.navy.mil/rstt/oneday?date='+d+'&coords='+l_l+'&tz=7';
-                        http_get(moon_phase_url, function(data) {
+                        var moon_phase_url = 'https://api.usno.navy.mil/rstt/oneday?date='+d+'&coords='+l_l+'&tz=7';
+                        https_get(moon_phase_url, function(data) {
                             console.log(data);
                             draw_moon(data);
                         });
